@@ -1,3 +1,43 @@
+#=========================================================================
+#============================ BombCrypto Bot =============================
+#=========================================================================
+
+#       oooooooooo.  ooooooooooooo  .oooooo..o   .oooo.     .oooo.   
+#       `888'   `Y8b 8'   888   `8 d8P'    `Y8 .dP""Y88b  .dP""Y88b  
+#        888     888      888      Y88bo.            ]8P'       ]8P' 
+#        888oooo888'      888       `"Y8888o.      .d8P'      .d8P'  
+#        888    `88b      888           `"Y88b   .dP'       .dP'     
+#        888    .88P      888      oo     .d8P .oP     .o .oP     .o 
+#       o888bood8P'      o888o     8""88888P'  8888888888 8888888888 
+                                                      
+#=========================================================================
+#================ Please consider buying me a coffee :) ==================
+#=========================================================================
+#============== 0x7e665768270dF85A1D398498F9694C17e646Aa8C ===============
+#================================= PIX ===================================
+#================= 14c6beb5-a38a-46f1-b029-cf2e104712d0 ==================
+#=========================================================================
+
+
+#***************************BTS-KEY (OPTIONAL)***************************#
+    ## ##   ### ##    ## ##     ####    ## ##   ###  ##    ##     ####     
+   ##   ##   ##  ##  ##   ##     ##    ##   ##    ## ##     ##     ##      
+   ##   ##   ##  ##  ##          ##    ##   ##   # ## #   ## ##    ##      
+   ##   ##   ##  ##  ##          ##    ##   ##   ## ##    ##  ##   ##      
+   ##   ##   ## ##   ##          ##    ##   ##   ##  ##   ## ###   ##      
+   ##   ##   ##      ##   ##     ##    ##   ##   ##  ##   ##  ##   ##  ##  
+    ## ##   ####      ## ##     ####    ## ##   ###  ##  ###  ##  ### ###  
+
+
+
+    #Get your BTS-Key here:
+    # ---->   https://bit.ly/3ETbs90
+
+    #SE PRECISAR, pegue sua BTS-Key aqui: 
+    # ---->   https://bit.ly/3DXHqje
+    
+#************************************************************************# 
+
   # [en_US] Time intervals configuration
   #
   # [pt_BR] Configurações de intervalos de tempo
@@ -40,8 +80,8 @@
   #
   telegram:
     telegram_mode: false
-    telegram_chat_id: ["<CHAT ID TELEGRAM 1>", "<CHAT ID TELEGRAM 2>"]
-    telegram_bot_key: "<TELEGRAM BOT TOKEN>"
+    telegram_chat_id: ["CHAT-ID TELEGRAM 1>", "CHAT-ID TELEGRAM 2 (OPTIONAL)"]
+    telegram_bot_key: "TELEGRAM BOT TOKEN"
     enable_coin_report: false
     enable_map_report: false
     format_of_images: "jpg"
@@ -52,7 +92,7 @@
   #
   metamask:
     enable_login_metamask: false
-    password: "<METAMASK PASSWORD>"
+    password: "METAMASK PASSWORD"
 
   # [en_US] How confident the bot needs to be to click the buttons (values from 0 to 1. 0 is the minimum value, 1 is the maximum value)
   #
