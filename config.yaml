@@ -42,6 +42,7 @@
     telegram_mode: false
     telegram_chat_id: ["<CHAT ID TELEGRAM 1>", "<CHAT ID TELEGRAM 2>"]
     telegram_bot_key: "<TELEGRAM BOT TOKEN>"
+    telegram_username: <TELEGRAM @USERNAME> # [en_US] Call to user / [pt_BR] Ligar para o usuario
     enable_coin_report: false
     enable_map_report: false
     format_of_images: "jpg"
@@ -201,4 +202,4 @@
   # [en_US] DON'T TOUCH
   #
   # [pt_BR] NÃO MEXE
-  version: "1.2.9"
+  version: "1.0.1"
