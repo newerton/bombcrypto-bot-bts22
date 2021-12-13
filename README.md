@@ -56,7 +56,7 @@ e o uso de bots é oficialmente PROIBIDO. Não me responsabilizo por eventuais
 penalidades sofridas por quem usar o bot, use por sua própria conta e risco.
 
 ## 🪟 Instalação:
-### Baixe e instale o Python pelo site [https://www.python.org/downloads/](https://www.python.org/downloads/)
+### Baixe e instale o Python 3.9.7 pelo site [https://www.python.org/downloads/release/python-397/](https://www.python.org/downloads/release/python-397/)
 
 
 É importante marcar a opção para adicionar o
