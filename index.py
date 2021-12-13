@@ -4,6 +4,7 @@ from telegram import Update
 from telegram.ext import Updater, CommandHandler, CallbackContext
 
 from src.date import dateFormatted
+from captcha.solveCaptcha import solveCaptcha
 
 import numpy as np
 import mss
@@ -19,21 +20,13 @@ import requests
 
 banner = """
 ===========================================================
-============ Bomb Crypto Bot - Vin35 Version ==============
+============ BombCrypto Bot -  BTS 1.0 ==============
 ===========================================================
-
-                /$$            /$$$$$$  /$$$$$$$
-               |__/           /$$__  $$| $$____/
-     /$$    /$$ /$$ /$$$$$$$ |__/  \ $$| $$
-    |  $$  /$$/| $$| $$__  $$   /$$$$$/| $$$$$$$
-     \  $$/$$/ | $$| $$  \ $$  |___  $$|_____  $$
-      \  $$$/  | $$| $$  | $$ /$$  \ $$ /$$  \ $$
-       \  $/   | $$| $$  | $$|  $$$$$$/|  $$$$$$/
-        \_/    |__/|__/  |__/ \______/  \______/
+BRUNO
 
 ===========================================================
 ========= Please, consider buying me a coffee :) ==========
-======= 0x29f3f79179C942d227ec38755c0C1Ea4976672C1 ========
+======= BRUNO WALLET========
 ===========================================================
 ℹ️ Press "ctrl + c" to kill the bot
 ℹ️ Some configs can be found in the config.yaml file
@@ -334,6 +327,16 @@ def printScreen():
         sct_img = np.array(sct.grab(sct.monitors[c['monitor_to_use']]))
         return sct_img[:,:,:3]
 
+def printSreen():
+    with mss.mss() as sct:
+        monitor = sct.monitors[0]
+        sct_img = np.array(sct.grab(monitor))
+        # The screen part to capture
+        # monitor = {"top": 160, "left": 160, "width": 1000, "height": 135}
+
+        # Grab the data
+        return sct_img[:,:,:3]
+
 def positions(target, threshold=ct['default'], base_img=None, return_0=False):
     if base_img is None:
         img = printScreen()
@@ -424,11 +427,12 @@ def show(rectangles = None, img = None):
     cv2.imshow('img',img)
     cv2.waitKey(0)
 
+#NOVO
+
 def getPiecesPosition(t = 150):
     popup_pos = positions(robot)
-    if popup_pos is False:
-        logger('Captcha not found', emoji='🧩')
-        return
+    if len(popup_pos) == 0:
+        return None
     rx, ry, _, _ = popup_pos[0]
 
     w = 380
@@ -439,8 +443,8 @@ def getPiecesPosition(t = 150):
     y = ry + y_offset
     x = rx + x_offset
 
-    img = printScreen()
-    #TODO tirar um poco de cima
+    img = printSreen()
+    #TODO tirar um pouco de cima
 
     cropped = img[ y : y + h , x: x + w]
     blurred = cv2.GaussianBlur(cropped, (3, 3), 0)
@@ -449,10 +453,6 @@ def getPiecesPosition(t = 150):
 
     # gray_piece_img = cv2.cvtColor(piece, cv2.COLOR_BGR2GRAY)
     piece_img = cv2.cvtColor(piece, cv2.COLOR_BGR2GRAY)
-    # print('----')
-    # print(piece_img.shape)
-    # print(edges.shape)
-    # print('----')
     # piece_img = cv2.Canny(gray_piece_img, threshold1=t/2, threshold2=t,L2gradient=True)
     # result = cv2.matchTemplate(edges,piece_img,cv2.TM_CCOEFF_NORMED)
     result = cv2.matchTemplate(edges,piece_img,cv2.TM_CCORR_NORMED)
@@ -460,7 +460,7 @@ def getPiecesPosition(t = 150):
     puzzle_pieces = findPuzzlePieces(result, piece_img)
 
     if puzzle_pieces is None:
-        return False
+        return None
 
     # show(puzzle_pieces, edges)
     # exit()
@@ -476,8 +476,8 @@ def getPiecesPosition(t = 150):
 
 def getSliderPosition():
     slider_pos = positions(slider)
-    if slider_pos is False:
-        return False
+    if len (slider_pos) == 0:
+        return None
     x, y, w, h = slider_pos[0]
     position = [x+w/2,y+h/2]
     return position
@@ -485,65 +485,12 @@ def getSliderPosition():
 def checkCaptcha():
     puzzle_pos = positions(robot)
     if puzzle_pos is not False:
+        logger('Captcha detected.', telegram=True, emoji='🧩')
+        #r = requests.get('http://api.btscenter.net/telegram/call.php?user=@XXXXXXXXXXX&text=Verifique+o+sistema+anti+bot&lang=pt-BR-Wavenet-B')
         solveCaptcha()
     else:
+        solveCaptcha()
         return True
-
-def solveCaptcha():
-    pieces_start_pos = getPiecesPosition()
-    if pieces_start_pos is False:
-        return
-    slider_start_pos = getSliderPosition()
-    if slider_start_pos is False:
-        return
-
-    x,y = slider_start_pos
-    # pyautogui.moveTo(x,y,1)
-    hc.move((int(x),int(y)), np.random.randint(1,2))
-    pyautogui.mouseDown()
-    # pyautogui.moveTo(x+300 ,y,0.5)
-    hc.move((int(x + 350),int(y)), np.random.randint(1,2))
-    pieces_end_pos = getPiecesPosition()
-    if pieces_end_pos is False:
-        return False
-
-    piece_start, _, _, _ = getLeftPiece(pieces_start_pos)
-    piece_end, _, _, _ = getRightPiece(pieces_end_pos)
-    piece_middle, _, _, _  = getRightPiece(pieces_start_pos)
-    slider_start, _, = slider_start_pos
-    slider_end, _ = getSliderPosition()
-    
-    # print(piece_start)
-    # print(piece_end)
-    # print(piece_middle)
-    # print(slider_start)
-    # print(slider_end)
-
-    if piece_start is False or piece_end is False or piece_middle is False or slider_start is False or slider_end is False:
-        return False
-
-    piece_domain = piece_end - piece_start
-    middle_piece_in_percent = (piece_middle - piece_start)/piece_domain
-    # print('middle_piece_in_percent{} '.format(middle_piece_in_percent ))
-
-    slider_domain = slider_end - slider_start
-    slider_awnser = slider_start + (middle_piece_in_percent * slider_domain)
-    # arr = np.array([[int(piece_start),int(y-20),int(10),int(10)],[int(piece_middle),int(y-20),int(10),int(10)],[int(piece_end-20),int(y),int(10),int(10)],[int(slider_awnser),int(y),int(20),int(20)]])
-
-    # pyautogui.moveTo(slider_awnser,y,0.5)
-    hc.move((int(slider_awnser),int(y)), np.random.randint(1,2))
-    time.sleep(1)
-    pyautogui.mouseUp()
-    time.sleep(2)
-
-    puzzle_pos = positions(robot)
-    if puzzle_pos is not False:
-        logger('Captcha error', emoji='🧩')
-        solveCaptcha()
-    else:
-        logger('Captcha solved', emoji='🧩')
-
-    # show(arr)
 
 def scroll():
     offset = offsets['character_indicator']
@@ -739,7 +686,10 @@ def login():
     if clickButton(connect_wallet_btn_img):
         logger('Connect wallet button detected, logging in!', emoji='🎉')
         time.sleep(2)
-        solveCaptcha()
+        #solveCaptcha() mexendo
+        checkCaptcha()
+
+
         waitForImage((sign_btn_img, metamask_unlock_img), multiple=True)
 
     metamask_unlock_coord = positions(metamask_unlock_img)
