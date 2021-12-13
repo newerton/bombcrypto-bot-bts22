@@ -31,18 +31,23 @@ espera do bot para dificultar ainda mais sua detecção.
 
 - [ ] 4 - Implementar uma tecla para fechar o bot.
 
+- [ ] 5 - Implementar para ligar pelo Telegram.
+
+- [ ] 6 - Implementar multi account.
+
 
 ``` 
-- 06/12/21
+- 13/Dec/21
              (15%)        (30%)         (50%)        (70%)      (85%)     (100%)
-[XXXXXXXXXXXXXXX|XXXXXXXXXX|XXXXXXXXXXXXXX|XXXXXXXXXXX|XXX-------|------------] (500R$)
-                                                          |
-                                                        380R$
+[--------------|------------|-------------|------------|----------|---------] (500R$)
+ |
+ R$0
 ```
 
  
 ## 🎁 Wallet
-### 0x29f3f79179C942d227ec38755c0C1Ea4976672C1
+### Wallet BEP20 (Binance Smart Chain): 0x7e665768270dF85A1D398498F9694C17e646Aa8C
+### PIX: 14c6beb5-a38a-46f1-b029-cf2e104712d0
 
 ## ⚠️ Aviso
 
@@ -56,24 +61,24 @@ penalidades sofridas por quem usar o bot, use por sua própria conta e risco.
 
 É importante marcar a opção para adicionar o
 python ao PATH:
-![Check Add python to PATH](https://raw.githubusercontent.com/vin350/bombcrypto-bot/main/images/readme/path.png)
+![Check Add python to PATH](https://raw.githubusercontent.com/bts22/bombcrypto-bot/main/images/readme/path.png)
 
 ### Realize o download do codigo no formato zip, e extraia o arquivo.
 
 ### Copie o caminho até a pasta do bot:
 
-![caminho](https://raw.githubusercontent.com/vin350/bombcrypto-bot/main/images/readme/address.png)
+![caminho](https://raw.githubusercontent.com/bts22/bombcrypto-bot/main/images/readme/address.png)
 
 ### Abra o terminal.
 
 Aperte a tecla do windows + r e digite "cmd":
 
-![launch terminal](https://raw.githubusercontent.com/vin350/bombcrypto-bot/main/images/readme/cmd.png)
+![launch terminal](https://raw.githubusercontent.com/bts22/bombcrypto-bot/main/images/readme/cmd.png)
 
 ### Navegue até a pasta do bot:
 Digite o comando "cd" + caminho que você copiou:
 
-![cd](https://raw.githubusercontent.com/vin350/bombcrypto-bot/main/images/readme/cd.png)
+![cd](https://raw.githubusercontent.com/bts22/bombcrypto-bot/main/images/readme/cd.png)
 
 ### Instale as dependências:
 
@@ -82,7 +87,7 @@ pip install -r requirements.txt
 ```
 
   
-![pip](https://raw.githubusercontent.com/vin350/bombcrypto-bot/main/images/readme/pip.png)
+![pip](https://raw.githubusercontent.com/bts22/bombcrypto-bot/main/images/readme/pip.png)
 
 ### Pronto! Agora é só iniciar o bot com o comando
 
@@ -90,7 +95,7 @@ pip install -r requirements.txt
 python index.py
 ```
 
-![run](https://raw.githubusercontent.com/vin350/bombcrypto-bot/main/images/readme/run.png)
+![run](https://raw.githubusercontent.com/bts22/bombcrypto-bot/main/images/readme/run.png)
 
 
 ## ⚒️ Como usar?
@@ -202,4 +207,5 @@ exemplo na pasta “targets” para uma tirada no seu próprio computador:
 
 ## 👍 Curtiu? Dê aquela fortalecida :)
 
-### Wallet: 0x29f3f79179C942d227ec38755c0C1Ea4976672C1
+### Wallet BEP20 (Binance Smart Chain): 0x7e665768270dF85A1D398498F9694C17e646Aa8C
+### PIX: 14c6beb5-a38a-46f1-b029-cf2e104712d0
