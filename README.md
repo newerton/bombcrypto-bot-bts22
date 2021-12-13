@@ -1,6 +1,6 @@
 <h1 align="center">
 
-![Bomb Crypto Banner](https://raw.githubusercontent.com/vin350/bombcrypto-bot/main/images/readme/banner.jpg)
+![Bomb Crypto Banner](https://raw.githubusercontent.com/bts22/bombcrypto-bot/main/images/readme/banner.jpg)
 
   <a>
     Bomb Crypto Bot
@@ -8,13 +8,13 @@
 </h1>
 
 ## 📋 Sobre
-Este bot tem o seu código aberto, de forma que qualquer pessoa pode vê-lo, fazer uma fork, ou updates.
 
 Desenvolvi esse bot inicialmente para o meu uso pessoal. Eu decidi publica-lo
 aqui para ajudar o pessoal e com a esperança de ganhar um trocadinho com
 doações.  Com o tempo mais e mais pessoas foram abrindo issues, pedindo ajuda,
-e dando sugestões. Eu tento responder todo mundo, mas ultimamente tem sido
-difícil acompanhar a demanda. 
+e dando sugestões. Eu tento responder todo mundo.
+
+### Agradecimento especial ao desenvolvedor [Nucito](https://github.com/nucito/) pelo atual solvercaptcha. 
 
 Eu gostaria de manter este bot grátis e com o código aberto. Para que isso
 seja possível eu estou criando algumas metas de doação para que o bot possa
