@@ -14,7 +14,7 @@ aqui para ajudar o pessoal e com a esperança de ganhar um trocadinho com
 doações.  Com o tempo mais e mais pessoas foram abrindo issues, pedindo ajuda,
 e dando sugestões. Eu tento responder todo mundo.
 
-### Agradecimento especial ao desenvolvedor [Nucito](https://github.com/nucito/) pelo atual solvercaptcha. 
+### Agradecimento especial ao desenvolvedor [Nucito](https://github.com/nucito/) pelo atual solvecaptcha. 
 
 Eu gostaria de manter este bot grátis e com o código aberto. Para que isso
 seja possível eu estou criando algumas metas de doação para que o bot possa
