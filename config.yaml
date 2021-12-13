@@ -1,43 +1,3 @@
-#=========================================================================
-#============================ BombCrypto Bot =============================
-    version: "1.0.2" #Don't change / Não altere.
-#=========================================================================
-#
-# ███████████  ███████████  █████████   ████████   ████████ 
-#░░███░░░░░███░█░░░███░░░█ ███░░░░░███ ███░░░░███ ███░░░░███
-# ░███    ░███░   ░███  ░ ░███    ░░░ ░░░    ░███░░░    ░███
-# ░██████████     ░███    ░░█████████    ███████    ███████ 
-# ░███░░░░░███    ░███     ░░░░░░░░███  ███░░░░    ███░░░░  
-# ░███    ░███    ░███     ███    ░███ ███      █ ███      █
-# ███████████     █████   ░░█████████ ░██████████░██████████
-#░░░░░░░░░░░     ░░░░░     ░░░░░░░░░  ░░░░░░░░░░ ░░░░░░░░░░ 
-#=========================================================================
-#================ Please consider buying me a coffee :) ==================
-#=========================================================================
-#============== 0x7e665768270dF85A1D398498F9694C17e646Aa8C ===============
-#================================= PIX ===================================
-#================= 14c6beb5-a38a-46f1-b029-cf2e104712d0 ==================
-#=========================================================================
-
-
-#*********************************BTS-KEY********************************#
-#******* BTS-Key is optional and required for advanced resources. *******#
-#******* BTS-Key é opcional e requerida para recursos avançados.  *******#
-
-   bts:
-    key: "BTS-XXXXXXXXXXXXXXXXXXXX" #Insert your BTS-Key / Informe a chave
-
-    #Get your free BTS-Key here:
-    https://bit.ly/3ETbs90
-
-    #Pegue sua chave BTS-Key gratuitamente aqui: 
-    https://bit.ly/3DXHqje
-    
-#************************************************************************#
-
-
-
-
   # [en_US] Time intervals configuration
   #
   # [pt_BR] Configurações de intervalos de tempo
@@ -80,8 +40,8 @@
   #
   telegram:
     telegram_mode: false
-    telegram_chat_id: ["CHAT ID TELEGRAM 1", "CHAT ID TELEGRAM 2"]
-    telegram_bot_key: "TELEGRAM BOT TOKEN"
+    telegram_chat_id: ["<CHAT ID TELEGRAM 1>", "<CHAT ID TELEGRAM 2>"]
+    telegram_bot_key: "<TELEGRAM BOT TOKEN>"
     enable_coin_report: false
     enable_map_report: false
     format_of_images: "jpg"
@@ -230,3 +190,15 @@
   # [pt_BR] mostra mais informações 
   # Valor padrão: false
   debug: False
+
+
+
+
+
+
+
+
+  # [en_US] DON'T TOUCH
+  #
+  # [pt_BR] NÃO MEXE
+  version: "1.0.3"
