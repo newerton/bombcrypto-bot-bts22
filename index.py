@@ -20,7 +20,7 @@ import requests
 
 banner = """
 =========================================================================
-================ BombCrypto Bot - Version BTS22 1.0.3 ===================
+================ BombCrypto Bot - Version BTS22 1.0.4 ===================
 =========================================================================
 
  ███████████  ███████████  █████████   ████████   ████████ 
@@ -56,6 +56,7 @@ if stream is not None:
     ct = c['threshold']
     t = c['time_intervals']
     telegram_data = c['telegram']
+    bts_data = c['bts-key']
     metamask_data = c['metamask']
     chest_data = c['value_chests']
     offsets = c['offsets']

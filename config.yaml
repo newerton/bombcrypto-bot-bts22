@@ -19,16 +19,16 @@
 #=========================================================================
 
 
-#***************************BTS-KEY (OPTIONAL)***************************#
+  #***************************BTS-KEY (OPTIONAL)***************************#
     ## ##   ### ##    ## ##     ####    ## ##   ###  ##    ##     ####     
    ##   ##   ##  ##  ##   ##     ##    ##   ##    ## ##     ##     ##      
    ##   ##   ##  ##  ##          ##    ##   ##   # ## #   ## ##    ##      
    ##   ##   ##  ##  ##          ##    ##   ##   ## ##    ##  ##   ##      
    ##   ##   ## ##   ##          ##    ##   ##   ##  ##   ## ###   ##      
    ##   ##   ##      ##   ##     ##    ##   ##   ##  ##   ##  ##   ##  ##  
-    ## ##   ####      ## ##     ####    ## ##   ###  ##  ###  ##  ### ###  
-
-
+    ## ##   ####      ## ##     ####    ## ##   ###  ##  ###  ##  ### ### 
+    
+  bts-key: "BTS-XXXXXXXXXXXXXXXXXXXX"
 
     #Get your BTS-Key here:
     # ---->   https://bit.ly/3ETbs90
@@ -75,12 +75,11 @@
     value_chest4: 0.325
 
   # [en_US] Telegram configs
-  #
   # [pt_BR] Configs do telegram
-  #
+  
   telegram:
     telegram_mode: false
-    telegram_chat_id: ["CHAT-ID TELEGRAM 1>", "CHAT-ID TELEGRAM 2 (OPTIONAL)"]
+    telegram_chat_id: ["CHAT ID TELEGRAM 1", "CHAT ID TELEGRAM 2"]
     telegram_bot_key: "TELEGRAM BOT TOKEN"
     enable_coin_report: false
     enable_map_report: false
@@ -238,7 +237,49 @@
 
 
 
-  # [en_US] DON'T TOUCH
-  #
-  # [pt_BR] NÃO MEXE
-  version: "1.0.3"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  # [en_US] PLEASE DON'T CHANGE
+  # [pt_BR] POR FAVOR NÃO ALTERE
+  version: "1.0.4"
