@@ -20,17 +20,29 @@ import requests
 
 banner = """
 ===========================================================
-============ BombCrypto Bot -  BTS 1.0 ==============
-===========================================================
-BRUNO
+============ BombCrypto Bot - Version BTS22 1.0.1 ==============
+=========================================================================
 
-===========================================================
-========= Please, consider buying me a coffee :) ==========
-======= BRUNO WALLET========
-===========================================================
-ℹ️ Press "ctrl + c" to kill the bot
-ℹ️ Some configs can be found in the config.yaml file
-===========================================================
+ ███████████  ███████████  █████████   ████████   ████████ 
+░░███░░░░░███░█░░░███░░░█ ███░░░░░███ ███░░░░███ ███░░░░███
+ ░███    ░███░   ░███  ░ ░███    ░░░ ░░░    ░███░░░    ░███
+ ░██████████     ░███    ░░█████████    ███████    ███████ 
+ ░███░░░░░███    ░███     ░░░░░░░░███  ███░░░░    ███░░░░  
+ ░███    ░███    ░███     ███    ░███ ███      █ ███      █
+ ███████████     █████   ░░█████████ ░██████████░██████████
+░░░░░░░░░░░     ░░░░░     ░░░░░░░░░  ░░░░░░░░░░ ░░░░░░░░░░ 
+=========================================================================
+================ Please, consider buying me an coffe :) =================
+=========================================================================
+============== 0x7e665768270dF85A1D398498F9694C17e646Aa8C ===============
+================================= PIX ===================================
+================= 14c6beb5-a38a-46f1-b029-cf2e104712d0 ==================
+=========================================================================
+
+>>---> Press ctrl + c to kill the bot.
+
+>>---> Some configs can be found in the config.yaml file.
+
 """
 
 print(banner)
@@ -489,7 +501,6 @@ def checkCaptcha():
         #r = requests.get('http://api.btscenter.net/telegram/call.php?user=@XXXXXXXXXXX&text=Verifique+o+sistema+anti+bot&lang=pt-BR-Wavenet-B')
         solveCaptcha()
     else:
-        solveCaptcha()
         return True
 
 def scroll():
@@ -842,7 +853,7 @@ def randomMouseMovement():
     hc.move((int(x), int(y)), np.random.randint(1,3))
 
 def checkUpdates():
-    data = requests.get('https://raw.githubusercontent.com/vin350/bombcrypto-bot/main/config.yaml')
+    data = requests.get('https://raw.githubusercontent.com/bts22/bombcrypto-bot/main/config.yaml')
 
     if data is not None:
         v = yaml.safe_load(data.text)
