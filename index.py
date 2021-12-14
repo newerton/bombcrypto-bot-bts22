@@ -20,7 +20,7 @@ import requests
 
 banner = """
 =========================================================================
-================ BombCrypto Bot - Version BTS22 1.0.4 ===================
+================ BombCrypto Bot - Version BTS22 1.1.0 ===================
 =========================================================================
 
  ███████████  ███████████  █████████   ████████   ████████ 
@@ -442,60 +442,7 @@ def show(rectangles = None, img = None):
     cv2.imshow('img',img)
     cv2.waitKey(0)
 
-#NOVO
 
-def getPiecesPosition(t = 150):
-    popup_pos = positions(robot)
-    if len(popup_pos) == 0:
-        return None
-    rx, ry, _, _ = popup_pos[0]
-
-    w = 380
-    h = 200
-    x_offset = -40
-    y_offset = 65
-
-    y = ry + y_offset
-    x = rx + x_offset
-
-    img = printSreen()
-    #TODO tirar um pouco de cima
-
-    cropped = img[ y : y + h , x: x + w]
-    blurred = cv2.GaussianBlur(cropped, (3, 3), 0)
-    edges = cv2.Canny(blurred, threshold1=t/2, threshold2=t,L2gradient=True)
-    # img = cv2.Laplacian(img,cv2.CV_64F)
-
-    # gray_piece_img = cv2.cvtColor(piece, cv2.COLOR_BGR2GRAY)
-    piece_img = cv2.cvtColor(piece, cv2.COLOR_BGR2GRAY)
-    # piece_img = cv2.Canny(gray_piece_img, threshold1=t/2, threshold2=t,L2gradient=True)
-    # result = cv2.matchTemplate(edges,piece_img,cv2.TM_CCOEFF_NORMED)
-    result = cv2.matchTemplate(edges,piece_img,cv2.TM_CCORR_NORMED)
-
-    puzzle_pieces = findPuzzlePieces(result, piece_img)
-
-    if puzzle_pieces is None:
-        return None
-
-    # show(puzzle_pieces, edges)
-    # exit()
-
-    absolute_puzzle_pieces = []
-    for i, puzzle_piece in enumerate(puzzle_pieces):
-        px, py, pw, ph = puzzle_piece
-        absolute_puzzle_pieces.append( [ x + px, y + py, pw, ph])
-
-    absolute_puzzle_pieces = np.array(absolute_puzzle_pieces)
-    # show(absolute_puzzle_pieces)
-    return absolute_puzzle_pieces
-
-def getSliderPosition():
-    slider_pos = positions(slider)
-    if len (slider_pos) == 0:
-        return None
-    x, y, w, h = slider_pos[0]
-    position = [x+w/2,y+h/2]
-    return position
 
 def checkCaptcha():
     puzzle_pos = positions(robot)
@@ -551,7 +498,7 @@ def clickButtons():
             logger('Too many hero clicks, try to increase the go_to_work_btn threshold', telegram=True, emoji='⚠️')
             return
         sleep(1, 3)
-    logger('Clicking in %d heroes detected.' % len(buttons), telegram=True, emoji='👆')
+    logger('Clicking in %d heroes detected.' % len(buttons), telegram=False, emoji='👆')
     return len(buttons)
 
 def isWorking(bar, buttons):
@@ -581,7 +528,7 @@ def clickGreenBarButtons():
         if not isWorking(bar, buttons):
             not_working_green_bars.append(bar)
     if len(not_working_green_bars) > 0:
-        logger('Clicking in %d heroes with green bar detected.' % len(not_working_green_bars), telegram=True, emoji='👆')
+        logger('Clicking in %d heroes with green bar detected.' % len(not_working_green_bars), telegram=False, emoji='👆')
 
     # se tiver botao com y maior que bar y-10 e menor que y+10
     for (x, y, w, h) in not_working_green_bars:
