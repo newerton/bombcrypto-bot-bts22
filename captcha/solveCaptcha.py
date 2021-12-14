@@ -4,6 +4,8 @@ import pyautogui
 import numpy as np
 import mss
 from os import listdir
+from pyclick import HumanClicker
+
 # from run import getBackgroundText
 import torch
 from random import randint
@@ -11,6 +13,8 @@ from random import randint
 # example_captcha_img = cv2.imread('images/example.png')
 
 model = torch.hub.load('./captcha', 'custom', "captcha/bomb_captcha.pt", source='local')
+
+hc = HumanClicker()
 
 def getBackgroundText(img, percent_required):
     boxes = []
@@ -136,18 +140,18 @@ def getSliderPositions(screenshot, popup_pos):
         return None
     (start_x, start_y) = slider
 
-    pyautogui.moveTo(start_x,start_y+randint(0,10),1)
+    # pyautogui.moveTo(start_x,start_y+randint(0,10),1)
+    hc.move((int(start_x),int(start_y+randint(0,10))), np.random.randint(1,2))
     pyautogui.mouseDown()
-    pyautogui.moveTo(start_x+400,start_y+randint(0,10),1)
+    hc.move((int(start_x+400),int(start_y+randint(0,10))), np.random.randint(1,2))
+    # pyautogui.moveTo(start_x+400,start_y+randint(0,10),1)
 
     screenshot = printSreen()
 
     end = position(d['slider'],img=screenshot,threshold = 0.8)
     (end_x, end_y) = end
 
-
     size = end_x-start_x
-
     increment = size/4
 
     positions = []
@@ -175,10 +179,10 @@ def solveCaptcha():
         return
     # moveSlider(screenshot,3,popup_pos)
 
-
     for position in slider_positions:
         x, y = position
-        pyautogui.moveTo(x,y,1)
+        # pyautogui.moveTo(x,y, 1)
+        hc.move((int(x),int(y)), 3)
         screenshot = printSreen()
         popup_pos = positions(d['robot'],img=screenshot)
         captcha_img = captchaImg(screenshot, popup_pos[0])
