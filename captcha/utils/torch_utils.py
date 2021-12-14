@@ -21,6 +21,7 @@ except ImportError:
     thop = None
 logger = logging.getLogger(__name__)
 
+Debug = False
 
 @contextmanager
 def torch_distributed_zero_first(local_rank: int):
@@ -73,7 +74,8 @@ def select_device(device='', batch_size=None):
     else:
         s += 'CPU\n'
 
-    logger.info(s)  # skip a line
+    if Debug == True:
+        logger.info(s)  # skip a line
     return torch.device('cuda:0' if cuda else 'cpu')
 
 
@@ -94,8 +96,9 @@ def profile(x, ops, n=100, device=None):
     device = device or torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
     x = x.to(device)
     x.requires_grad = True
-    print(torch.__version__, device.type, torch.cuda.get_device_properties(0) if device.type == 'cuda' else '')
-    print(f"\n{'Params':>12s}{'GFLOPS':>12s}{'forward (ms)':>16s}{'backward (ms)':>16s}{'input':>24s}{'output':>24s}")
+    if Debug == True:
+        print(torch.__version__, device.type, torch.cuda.get_device_properties(0) if device.type == 'cuda' else '')
+        print(f"\n{'Params':>12s}{'GFLOPS':>12s}{'forward (ms)':>16s}{'backward (ms)':>16s}{'input':>24s}{'output':>24s}")
     for m in ops if isinstance(ops, list) else [ops]:
         m = m.to(device) if hasattr(m, 'to') else m  # device
         m = m.half() if hasattr(m, 'half') and isinstance(x, torch.Tensor) and x.dtype is torch.float16 else m  # type
@@ -120,7 +123,8 @@ def profile(x, ops, n=100, device=None):
         s_in = tuple(x.shape) if isinstance(x, torch.Tensor) else 'list'
         s_out = tuple(y.shape) if isinstance(y, torch.Tensor) else 'list'
         p = sum(list(x.numel() for x in m.parameters())) if isinstance(m, nn.Module) else 0  # parameters
-        print(f'{p:12.4g}{flops:12.4g}{dtf:16.4g}{dtb:16.4g}{str(s_in):>24s}{str(s_out):>24s}')
+        if Debug == True:
+            print(f'{p:12.4g}{flops:12.4g}{dtf:16.4g}{dtb:16.4g}{str(s_in):>24s}{str(s_out):>24s}')
 
 
 def is_parallel(model):
@@ -161,12 +165,14 @@ def sparsity(model):
 def prune(model, amount=0.3):
     # Prune model to requested global sparsity
     import torch.nn.utils.prune as prune
-    print('Pruning model... ', end='')
+    if Debug == True:
+        print('Pruning model... ', end='')
     for name, m in model.named_modules():
         if isinstance(m, nn.Conv2d):
             prune.l1_unstructured(m, name='weight', amount=amount)  # prune
             prune.remove(m, 'weight')  # make permanent
-    print(' %.3g global sparsity' % sparsity(model))
+    if Debug == True:            
+        print(' %.3g global sparsity' % sparsity(model))
 
 
 def fuse_conv_and_bn(conv, bn):
@@ -197,10 +203,12 @@ def model_info(model, verbose=False, img_size=640):
     n_p = sum(x.numel() for x in model.parameters())  # number parameters
     n_g = sum(x.numel() for x in model.parameters() if x.requires_grad)  # number gradients
     if verbose:
-        print('%5s %40s %9s %12s %20s %10s %10s' % ('layer', 'name', 'gradient', 'parameters', 'shape', 'mu', 'sigma'))
+        if Debug == True:
+            print('%5s %40s %9s %12s %20s %10s %10s' % ('layer', 'name', 'gradient', 'parameters', 'shape', 'mu', 'sigma'))
         for i, (name, p) in enumerate(model.named_parameters()):
             name = name.replace('module_list.', '')
-            print('%5g %40s %9s %12g %20s %10.3g %10.3g' %
+            if Debug == True:
+                print('%5g %40s %9s %12g %20s %10.3g %10.3g' %
                   (i, name, p.requires_grad, p.numel(), list(p.shape), p.mean(), p.std()))
 
     try:  # FLOPS
@@ -213,7 +221,8 @@ def model_info(model, verbose=False, img_size=640):
     except (ImportError, Exception):
         fs = ''
 
-    logger.info(f"Model Summary: {len(list(model.modules()))} layers, {n_p} parameters, {n_g} gradients{fs}")
+    if Debug == True:
+        logger.info(f"Model Summary: {len(list(model.modules()))} layers, {n_p} parameters, {n_g} gradients{fs}")
 
 
 def load_classifier(name='resnet101', n=2):
