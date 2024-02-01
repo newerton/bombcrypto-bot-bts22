@@ -815,8 +815,8 @@ def checkUpdates():
         exit()
 
     print('Git Version: ' + version)
-    print('Version installed: ' + c['version'])
-    if version > c['version']:
+    print('Version installed: ' + v['version'])
+    if version > v['version']:
         logger('New version available, please update', telegram=True, emoji='🎉')
 
 
