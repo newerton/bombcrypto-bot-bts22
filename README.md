@@ -46,8 +46,9 @@ espera do bot para dificultar ainda mais sua detecção.
 
  
 ## 🎁 Wallet
-### Wallet BEP20 (Binance Smart Chain): 0x7e665768270dF85A1D398498F9694C17e646Aa8C
-### PIX: 14c6beb5-a38a-46f1-b029-cf2e104712d0
+### BCOIN: 0x4847C29561B6682154E25c334E12d156e19F613a
+### SEN: 0x4847C29561B6682154E25c334E12d156e19F613a
+### PIX: 08912d17-47a6-411e-b7ec-ef793203f836
 
 ## ⚠️ Aviso
 
